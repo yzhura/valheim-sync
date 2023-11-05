@@ -2,5 +2,8 @@
   "name": "valheim-words-sync",
   "version": "0.0.1",
   "author": "yzhura",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "node-notifier": "^10.0.1"
+  }
 }
