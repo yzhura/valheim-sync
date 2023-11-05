@@ -64,7 +64,7 @@ async function copyAndPushWorld() {
     }
     process.chdir(CURRENT_FOLDER);
     execSync("git add .");
-    execSync('git commit -m "Сохранение мира Valheim"');
+    execSync('git commit -m "Збереження світів Valheim"');
     execSync(`git push ${REPO_URL}`);
 
     notifier.notify({
