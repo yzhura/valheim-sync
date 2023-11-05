@@ -20,11 +20,17 @@ async function copyAndPushWorld() {
       );
 
       if (!stdout.includes('valheim.exe"')) {
+        if (!fs.existsSync(`${CURRENT_FOLDER}/worlds_local`)) {
+          fs.mkdirSync(`${CURRENT_FOLDER}/worlds_local`);
+          console.log("Папка создана.");
+        } else {
+          console.log("Папка уже существует.");
+        }
         const files = fs.readdirSync(WORLDS_LOCAL_PATH);
         for (const file of files) {
           fs.copyFileSync(
             `${WORLDS_LOCAL_PATH}/${file}`,
-            `${CURRENT_FOLDER}/${file}`
+            `${CURRENT_FOLDER}/worlds_local/${file}`
           );
         }
         process.chdir(CURRENT_FOLDER);
