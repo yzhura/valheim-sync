@@ -45,11 +45,11 @@ function updateWorld() {
 async function copyAndPushWorld() {
   try {
     while (true) {
-      const { stdout } = await execAsync(
+      const { stdout } = execSync(
         'tasklist /fo csv /nh /fi "imagename eq valheim.exe"'
       );
 
-      if (!stdout.includes('valheim.exe"')) {
+      if (!stdout || !stdout.includes('valheim.exe"')) {
         if (!fs.existsSync(`${CURRENT_FOLDER}/worlds_local`)) {
           fs.mkdirSync(`${CURRENT_FOLDER}/worlds_local`);
         }
@@ -61,9 +61,9 @@ async function copyAndPushWorld() {
           );
         }
         process.chdir(CURRENT_FOLDER);
-        await execAsync("git add .");
-        await execAsync('git commit -m "Сохранение мира Valheim"');
-        await execAsync(`git push ${REPO_URL}`);
+        execSync("git add .");
+        execSync('git commit -m "Сохранение мира Valheim"');
+        execSync(`git push ${REPO_URL}`);
 
         notifier.notify({
           title: "Успішно",
@@ -87,4 +87,4 @@ async function copyAndPushWorld() {
 updateWorld();
 setTimeout(() => {
   copyAndPushWorld();
-}, 30000);
+}, 1000);
