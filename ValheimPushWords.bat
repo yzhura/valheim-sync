@@ -32,4 +32,7 @@
 ::
 ::978f952a14a936cc963da21a135fa983
 @echo off
-node E:\projects\valheim-sync\push.js
+setlocal
+cd /d %~dp0
+node pull.js
+endlocal
