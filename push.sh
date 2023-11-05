@@ -9,7 +9,7 @@ while true; do
   if pgrep -x "valheim.exe" > /dev/null; then
     sleep 1
   else
-    cd $CURRENT_FOLDER
+    cd $WORLDS_LOCAL_PATH
     # Копируем файлы из $WORLDS_LOCAL_PATH в текущую папку
     cp -r $WORLDS_LOCAL_PATH/* $CURRENT_FOLDER
     cd $CURRENT_FOLDER
