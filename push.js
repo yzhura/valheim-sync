@@ -74,19 +74,11 @@ async function copyAndPushWorld() {
     });
   } catch (error) {
     console.error("Error:", error);
-    try {
-      notifier.notify({
-        title: "Error",
-        message: error,
-        icon: ERROR_ICON,
-      });
-    } catch (e) {
-      notifier.notify({
-        title: "Error",
-        message: "Шось пішло не так",
-        icon: ERROR_ICON,
-      });
-    }
+    notifier.notify({
+      title: "Error",
+      message: typeof error === "string" ? error : "Шось пішло не так",
+      icon: ERROR_ICON,
+    });
   }
 }
 
