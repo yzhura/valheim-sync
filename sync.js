@@ -87,4 +87,4 @@ async function copyAndPushWorld() {
 updateWorld();
 setTimeout(() => {
   copyAndPushWorld();
-}, 1000);
+}, 3000);
