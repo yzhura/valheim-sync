@@ -36,7 +36,7 @@ function updateWorld() {
     console.error("Error:", error);
     notifier.notify({
       title: "Error",
-      message: error,
+      message: typeof error === "string" ? error : "Шось пішло не так",
       icon: ERROR_ICON,
     });
   }
